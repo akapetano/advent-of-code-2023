@@ -21,7 +21,9 @@ export const readSolution = (
   console.log(`Solution for day ${day}, challenge ${challenge}: ${solution}`);
 
 export function getFirstAndLastDigits(input: string): number {
-  const firstDigit = Number(input[0]);
-  const lastDigit = Number(input[input.length - 1]);
-  return firstDigit * 10 + lastDigit;
+  const inputArray = input.split("");
+  const reversedInputArray = input.split("").reverse();
+  const firstDigit = inputArray.find((char) => !isNaN(Number(char)));
+  const lastDigit = reversedInputArray.find((char) => !isNaN(Number(char)));
+  return Number(`${firstDigit}${lastDigit}`);
 }
