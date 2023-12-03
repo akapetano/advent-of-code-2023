@@ -22,8 +22,18 @@ export const readSolution = (
 
 export function getFirstAndLastDigits(input: string): number {
   const inputArray = input.split("");
-  const reversedInputArray = input.split("").reverse();
   const firstDigit = inputArray.find((char) => !isNaN(Number(char)));
+
+  if (firstDigit === undefined) {
+    return 0;
+  }
+
+  const reversedInputArray = input.split("").reverse();
   const lastDigit = reversedInputArray.find((char) => !isNaN(Number(char)));
+
+  if (lastDigit === undefined) {
+    return 0;
+  }
+
   return Number(`${firstDigit}${lastDigit}`);
 }

@@ -10,9 +10,9 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 
 Consider your entire calibration document. What is the sum of all of the calibration values? */
 
-import { getFirstAndLastDigits } from "../../utils";
+import { getFirstAndLastDigits } from "../utils";
 import { join } from "path";
-import { parseInput } from "../../utils";
+import { parseInput } from "../utils";
 
 const path = join(__dirname, "input.txt");
 const input = parseInput(path, { split: true }) as string[];
