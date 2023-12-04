@@ -11,7 +11,7 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 Consider your entire calibration document. What is the sum of all of the calibration values? */
 
 import { join } from "path";
-import { parseInput } from "../utils";
+import { parseInput, sum } from "../utils";
 
 const path = join(__dirname, "input.txt");
 const input = parseInput(path, { split: true }) as string[];
@@ -36,10 +36,7 @@ function getFirstAndLastDigits(input: string): number {
 
 export function solve(): number {
   const numbers = input.map((line) => getFirstAndLastDigits(line));
-  const sum = numbers.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
-  );
+  const result = sum(numbers);
 
-  return sum;
+  return result;
 }
