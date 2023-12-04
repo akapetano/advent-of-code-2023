@@ -10,16 +10,36 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 
 Consider your entire calibration document. What is the sum of all of the calibration values? */
 
-import { getFirstAndLastDigits } from "../utils";
 import { join } from "path";
 import { parseInput } from "../utils";
 
 const path = join(__dirname, "input.txt");
 const input = parseInput(path, { split: true }) as string[];
 
+function getFirstAndLastDigits(input: string): number {
+  const inputArray = input.split("");
+  const firstDigit = inputArray.find((char) => !isNaN(Number(char)));
+
+  if (firstDigit === undefined) {
+    return 0;
+  }
+
+  const reversedInputArray = input.split("").reverse();
+  const lastDigit = reversedInputArray.find((char) => !isNaN(Number(char)));
+
+  if (lastDigit === undefined) {
+    return 0;
+  }
+
+  return Number(`${firstDigit}${lastDigit}`);
+}
+
 export function solve(): number {
   const numbers = input.map((line) => getFirstAndLastDigits(line));
-  const result = numbers.reduce((acc, curr) => acc + curr, 0);
+  const sum = numbers.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
 
-  return result;
+  return sum;
 }
