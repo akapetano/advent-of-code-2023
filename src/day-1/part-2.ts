@@ -14,7 +14,8 @@ In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Addi
 What is the sum of all of the calibration values? */
 
 import { join } from "path";
-import { parseInput, sum } from "../utils";
+import { parseInput } from "../utils/input";
+import { sum } from "utils/number";
 
 const path = join(__dirname, "input.txt");
 const input = parseInput(path, { split: true }) as string[];
